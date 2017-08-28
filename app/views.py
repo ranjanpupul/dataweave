@@ -40,7 +40,7 @@ class ProductDataApi(APIView):
 			return Response({}, status=status.HTTP_400_BAD_REQUEST)
 
 	def get(self, request, category=None, brand=None, sub_category=None, source=None, title=None, sku=None):
-		import ipdb; ipdb.set_trace()
+		# import ipdb; ipdb.set_trace()
 		# print request.GET
 
 		try:
