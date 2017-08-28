@@ -40,14 +40,34 @@ class ProductDataApi(APIView):
 			return Response({}, status=status.HTTP_400_BAD_REQUEST)
 
 	def get(self, request, category=None, brand=None, sub_category=None, source=None, title=None, sku=None):
+		import ipdb; ipdb.set_trace()
+		# print request.GET
 
 		try:
-			title = request.data.get('title', None)
-			sku = request.data.get('sku', None)
-			brand = request.data.get('brand', None)
-			category = request.data.get('category', None)
-			sub_category = request.data.get('sub_category', None)
-			source = request.data.get('source', None)
+			try:
+				title = request.GET['title']
+			except Exception as e:
+				print e
+			try:
+				sku = request.GET['sku']
+			except Exception as e:
+				print e
+			try:
+				brand = request.GET['brand']
+			except Exception as e:
+				print e
+			try:
+				category = request.GET['category']
+			except Exception as e:
+				print e
+			try:
+				sub_category = request.GET['sub_category']
+			except Exception as e:
+				print e
+			try:
+				source = request.GET['source']
+			except Exception as e:
+				print e
 
 			if category or sub_category or brand or source:
 				product = Product.objects.filter(Q(category=category) | Q(sub_category=sub_category) |
@@ -63,7 +83,7 @@ class ProductDataApi(APIView):
 		except:
 			return Response({}, status=status.HTTP_400_BAD_REQUEST)
 
-	def put(request):
+	def put(self, request):
 		try:
 			products = Product.objects.filter()
 			for product in products:
